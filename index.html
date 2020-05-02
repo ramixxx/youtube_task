@@ -1,0 +1,26 @@
+<!doctype html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
+
+<html lang="en">
+  <label>Video Id:</label><br>
+  <input style="width:500px;" type="text" id="videoId"><br>
+  <label >Api Key:</label><br>
+  <input style="width:500px;" type="text" id="apiKey"><br><br>
+  <input type="submit" value="Submit" onClick="getVideoInfo();">
+  <div id="response"></div>
+</html>
+
+<script>
+  function getVideoInfo() {
+    let videoId = document.getElementById('videoId').value;
+    let ytApiKey = document.getElementById('apiKey').value;
+    $.get("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + videoId + "&key=" + ytApiKey, function(data) {
+      $('#response').append("Title:<br>" + data.items[0].snippet.title + "<br>" + "<br>");
+      $('#response').append("Description:<br>" + data.items[0].snippet.description  + "<br>" + "<br>");
+      $('#response').append("Channel name:<br>" + data.items[0].snippet.channelTitle  + "<br>" + "<br>");
+      if (data.items[0].snippet.tags) {
+        $('#response').append("Name of game:<br>" + data.items[0].snippet.tags[0]  + "<br>" + "<br>");
+      }
+    });
+  }
+</script>
