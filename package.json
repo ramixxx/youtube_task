@@ -10,7 +10,7 @@
   "author": "Raimonds Plume",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "url": "^0.11.0"
   },
   "devDependencies": {
